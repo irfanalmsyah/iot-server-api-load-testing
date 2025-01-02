@@ -12,10 +12,9 @@ run_test() {
         echo "Running test ($i/$RUN_COUNT): $METHOD $ENDPOINT with $VUS concurrent users"
         K6_VUS=$VUS k6 run ./rust.js --quiet -e METHOD=$METHOD -e ENDPOINT=$ENDPOINT
         echo "Finished test ($i/$RUN_COUNT): $METHOD $ENDPOINT with $VUS concurrent users"
+        echo "Sleeping for $SLEEP_TIME"
+        sleep $SLEEP_TIME
     done
-
-    echo "Sleeping for $SLEEP_TIME"
-    sleep $SLEEP_TIME
 }
 
 run_test 200 GET /nodes/
