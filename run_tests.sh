@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SLEEP_TIME=10
+SLEEP_TIME=2m
 
 echo "GET /nodes/ 200 concurrent users"
 K6_VUS=200 k6 run ./rust.js --quiet -e METHOD=GET -e ENDPOINT=/nodes/

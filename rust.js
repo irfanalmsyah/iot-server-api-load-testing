@@ -2,7 +2,7 @@ import http from "k6/http";
 import { getTokenUser } from "./token.js";
 
 export const options = {
-  duration: "3s",
+  duration: "60s",
 };
 
 export function setup() {
