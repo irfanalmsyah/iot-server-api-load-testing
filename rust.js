@@ -54,7 +54,7 @@ export default function (data) {
       http.put(url, JSON.stringify(node_payload), params);
       break;
     case "DELETE":
-      http.del(url, params);
+      http.del(url, null, params);
       break;
     default:
       throw new Error("Unsupported method");
