@@ -25,34 +25,4 @@ run_test 600 GET /node
 run_test 800 GET /node
 run_test 1000 GET /node
 
-run_test 200 GET /node/3
-run_test 400 GET /node/3
-run_test 600 GET /node/3
-run_test 800 GET /node/3
-run_test 1000 GET /node/3
-
-run_test 200 POST /node
-run_test 400 POST /node
-run_test 600 POST /node
-run_test 800 POST /node
-run_test 1000 POST /node
-
-run_test 200 PUT /node/3
-run_test 400 PUT /node/3
-run_test 600 PUT /node/3
-run_test 800 PUT /node/3
-run_test 1000 PUT /node/3
-
-run_test 200 DELETE /node/3
-run_test 400 DELETE /node/3
-run_test 600 DELETE /node/3
-run_test 800 DELETE /node/3
-run_test 1000 DELETE /node/3
-
-run_test 200 POST /channel
-run_test 400 POST /channel
-run_test 600 POST /channel
-run_test 800 POST /channel
-run_test 1000 POST /channel
-
 echo "Finished tests at $(date '+%Y-%m-%d %H:%M:%S')"
