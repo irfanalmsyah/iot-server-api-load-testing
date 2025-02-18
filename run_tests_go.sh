@@ -19,10 +19,10 @@ run_test() {
 
 echo "Starting tests at $(date '+%Y-%m-%d %H:%M:%S')"
 
-run_test 200 GET /node
-run_test 400 GET /node
-run_test 600 GET /node
-run_test 800 GET /node
-run_test 1000 GET /node
+run_test 200 POST /channel
+run_test 400 POST /channel
+run_test 600 POST /channel
+run_test 800 POST /channel
+run_test 1000 POST /channel
 
 echo "Finished tests at $(date '+%Y-%m-%d %H:%M:%S')"
