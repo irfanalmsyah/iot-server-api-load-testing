@@ -1,7 +1,7 @@
 import http from "k6/http";
 
 const getToken = (creds) => {
-  const url = "http://127.0.0.1:3000/user/login";
+  const url = `http://${__ENV.HOST}:8080/users/login/`;
   const payload = JSON.stringify({
     username: creds,
     password: creds,
@@ -16,7 +16,8 @@ const getToken = (creds) => {
   const res = http.post(url, payload, params);
 
   if (res.status === 200) {
-    return res.body;
+    const data = res.json();
+    return data.data;
   } else {
     throw new Error(`Failed to fetch token: ${res.status} - ${res.body}`);
   }

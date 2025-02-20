@@ -1,7 +1,9 @@
 #!/bin/bash
 
-SLEEP_TIME=2m
+SLEEP_TIME=30
 RUN_COUNT=5
+IP=10.0.0.7
+USERNAME=c001d4ky0898
 
 run_test() {
     local VUS=$1
@@ -9,8 +11,14 @@ run_test() {
     local ENDPOINT=$3
 
     for ((i=1; i<=RUN_COUNT; i++)); do
+        echo "Starting server on instance ($IP)..."
+        ssh $USERNAME@$IP "cd /home/$USERNAME/iot-server-api && bash -l ./run.sh"
+        echo "Sleep for 10s"
+        sleep 10
         echo "Running test ($i/$RUN_COUNT): $METHOD $ENDPOINT with $VUS concurrent users"
-        K6_VUS=$VUS k6 run ./rust.js --quiet -e METHOD=$METHOD -e ENDPOINT=$ENDPOINT
+        K6_VUS=$VUS k6 run ./script/rust.js --quiet -e METHOD=$METHOD -e ENDPOINT=$ENDPOINT -e HOST=$IP
+        echo "Killing server on instance B..."
+        ssh $USERNAME@$IP "pkill -9 -f iot-server-api"
         echo "Finished test ($i/$RUN_COUNT): $METHOD $ENDPOINT with $VUS concurrent users"
         echo "Sleeping for $SLEEP_TIME"
         sleep $SLEEP_TIME
